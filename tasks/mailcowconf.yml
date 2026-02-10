@@ -75,3 +75,19 @@
       value: "{{ mailcow__config_http_redirect }}"
     - variable: ENABLE_IPV6
       value: "{{ mailcow__config_enable_ipv6 }}"
+    - variable: SMTP_PORT
+      value: "{{ (mailcow__config_smtp_bind | ansible.utils.ipaddr + ':') if mailcow__config_smtp_bind is not none else '' }}25"
+    - variable: SMTPS_PORT
+      value: "{{ (mailcow__config_smtps_bind | ansible.utils.ipaddr + ':') if mailcow__config_smtps_bind is not none else '' }}465"
+    - variable: SUBMISSION_PORT
+      value: "{{ (mailcow__config_submission_bind | ansible.utils.ipaddr + ':') if mailcow__config_submission_bind is not none else '' }}587"
+    - variable: IMAP_PORT
+      value: "{{ (mailcow__config_imap_bind | ansible.utils.ipaddr + ':') if mailcow__config_imap_bind is not none else '' }}143"
+    - variable: IMAPS_PORT
+      value: "{{ (mailcow__config_imaps_bind | ansible.utils.ipaddr + ':') if mailcow__config_imaps_bind is not none else '' }}993"
+    - variable: POP_PORT
+      value: "{{ (mailcow__config_pop_bind | ansible.utils.ipaddr + ':') if mailcow__config_pop_bind is not none else '' }}110"
+    - variable: POPS_PORT
+      value: "{{ (mailcow__config_pops_bind | ansible.utils.ipaddr + ':') if mailcow__config_pops_bind is not none else '' }}995"
+    - variable: SIEVE_PORT
+      value: "{{ (mailcow__config_sieve_bind | ansible.utils.ipaddr + ':') if mailcow__config_sieve_bind is not none else '' }}4190"
